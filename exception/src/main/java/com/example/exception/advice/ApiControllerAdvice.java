@@ -26,13 +26,13 @@ import java.util.stream.StreamSupport;
 public class ApiControllerAdvice {
 
     @ExceptionHandler(value = Exception.class)
-    public ResponseEntity exception(Exception e){
+    public ResponseEntity exception(Exception e) {
         System.out.println(e.getClass().getName());
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("");
     }
 
     @ExceptionHandler(value = MethodArgumentNotValidException.class)
-    public ResponseEntity methodArgumentNotValidException(MethodArgumentNotValidException e, HttpServletRequest httpServletRequest){
+    public ResponseEntity methodArgumentNotValidException(MethodArgumentNotValidException e, HttpServletRequest httpServletRequest) {
 
         List<Error> errorList = new ArrayList<>();
 
@@ -63,15 +63,15 @@ public class ApiControllerAdvice {
     }
 
     @ExceptionHandler(value = ConstraintViolationException.class)
-    public ResponseEntity constraintViolationException(ConstraintViolationException e, HttpServletRequest httpServletRequest){
+    public ResponseEntity constraintViolationException(ConstraintViolationException e, HttpServletRequest httpServletRequest) {
 
         List<Error> errorList = new ArrayList<>();
 
-        e.getConstraintViolations().forEach(error ->{
+        e.getConstraintViolations().forEach(error -> {
             Stream<Path.Node> stream = StreamSupport.stream(error.getPropertyPath().spliterator(), false);
             List<Path.Node> list = stream.collect(Collectors.toList());
 
-            String field = list.get(list.size() -1).getName();
+            String field = list.get(list.size() - 1).getName();
             String message = error.getMessage();
             String invalidValue = error.getInvalidValue().toString();
 
@@ -95,7 +95,7 @@ public class ApiControllerAdvice {
     }
 
     @ExceptionHandler(value = MissingServletRequestParameterException.class)
-    public ResponseEntity missingServletRequestParameterException(MissingServletRequestParameterException e, HttpServletRequest httpServletRequest){
+    public ResponseEntity missingServletRequestParameterException(MissingServletRequestParameterException e, HttpServletRequest httpServletRequest) {
 
         List<Error> errorList = new ArrayList<>();
 

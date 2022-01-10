@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.*;
 public class ApiController {
 
     @PostMapping("/post")
-    public User post(@RequestBody User user){
+    public User post(@RequestBody User user) {
         return user;
     }
 
     @DeleteMapping("/delete")
-    public ResponseEntity post(){
+    public ResponseEntity post() {
         return ResponseEntity.ok().build();
     }
 }

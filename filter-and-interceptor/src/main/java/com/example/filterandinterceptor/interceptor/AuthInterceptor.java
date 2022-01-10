@@ -16,8 +16,8 @@ public class AuthInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
         boolean validAuthUser = checkValidAccessAnnotation(handler, AuthUser.class);
-        System.out.println("annotation check : "+validAuthUser);
-        if(validAuthUser){
+        System.out.println("annotation check : " + validAuthUser);
+        if (validAuthUser) {
             return true;
         }
 
@@ -26,14 +26,14 @@ public class AuthInterceptor implements HandlerInterceptor {
 
     private boolean checkValidAccessAnnotation(Object handler, Class clazz) {
 
-        if(handler instanceof ResourceHttpRequestHandler){
-            System.out.println("리소스 요청 class "+clazz.getName());
+        if (handler instanceof ResourceHttpRequestHandler) {
+            System.out.println("리소스 요청 class " + clazz.getName());
             return true;
         }
 
         HandlerMethod handlerMethod = (HandlerMethod) handler;
-        if(null != handlerMethod.getMethodAnnotation(clazz) || null != handlerMethod.getBeanType().getAnnotation(clazz)){
-            System.out.println("어노테이션 체크 class "+clazz.getName());
+        if (null != handlerMethod.getMethodAnnotation(clazz) || null != handlerMethod.getBeanType().getAnnotation(clazz)) {
+            System.out.println("어노테이션 체크 class " + clazz.getName());
             return true;
         }
 

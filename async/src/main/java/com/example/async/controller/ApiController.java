@@ -26,7 +26,7 @@ public class ApiController {
     public String hello() {
         logger.info("Thread Start");
 
-        for(int i = 0 ; i < 10; i ++){
+        for (int i = 0; i < 10; i++) {
             //async(i);
             taskService.run(i);
         }
@@ -50,8 +50,8 @@ public class ApiController {
     }
 
     @Async
-    public void async(int i){
-        logger.info("in method : {}",i);
+    public void async(int i) {
+        logger.info("in method : {}", i);
 
     }
 }

@@ -24,7 +24,7 @@ public class ApiController {
 
             @NotNull
             @Min(1)
-            @RequestParam Integer age){
+            @RequestParam Integer age) {
         User user = new User();
         user.setName(name);
         user.setAge(age);
@@ -34,7 +34,7 @@ public class ApiController {
 
 
     @PostMapping("")
-    public User post(@Valid @RequestBody User user){
+    public User post(@Valid @RequestBody User user) {
         System.out.println(user);
         return user;
     }

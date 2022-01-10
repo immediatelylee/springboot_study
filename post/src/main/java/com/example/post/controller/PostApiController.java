@@ -15,7 +15,7 @@ import java.util.Map;
 public class PostApiController {
 
     @PostMapping("/post")
-    public void post (@RequestBody PostRequestDto requestData){
+    public void post(@RequestBody PostRequestDto requestData) {
 
         System.out.println(requestData);
     }

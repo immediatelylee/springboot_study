@@ -27,25 +27,25 @@ public class ApiController {
             @RequestParam int age
 
     */
-        @Valid Req req
-    ){
+            @Valid Req req
+    ) {
         return req.getName() + req.getAge();
     }
 
     @PostMapping("/user")
-    public ResponseEntity user(@Valid @RequestBody User user, BindingResult bindingResult){
+    public ResponseEntity user(@Valid @RequestBody User user, BindingResult bindingResult) {
 
-        if(bindingResult.hasErrors()){
+        if (bindingResult.hasErrors()) {
             StringBuilder sb = new StringBuilder();
             bindingResult.getAllErrors().forEach(objectError -> {
                 FieldError field = (FieldError) objectError;
                 String message = objectError.getDefaultMessage();
 
-                System.out.println("field : "+field.getField());
+                System.out.println("field : " + field.getField());
                 System.out.println(message);
 
-                sb.append("field : "+field.getField());
-                sb.append("message : "+message);
+                sb.append("field : " + field.getField());
+                sb.append("message : " + message);
 
             });
 

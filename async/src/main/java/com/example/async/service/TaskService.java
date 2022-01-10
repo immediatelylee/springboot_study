@@ -22,7 +22,7 @@ public class TaskService {
 
     @Async("asyncThread")
     public void run(int i) {
-        logger.info("count : {}",i);
+        logger.info("count : {}", i);
     }
 
     @Async("asyncThread")
