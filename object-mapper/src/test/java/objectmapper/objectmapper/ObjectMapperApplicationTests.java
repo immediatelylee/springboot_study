@@ -17,18 +17,18 @@ class ObjectMapperApplicationTests {
         // controller req json(text) -> object
         // response object -> json(text)
 
-        var objectMapper = new ObjectMapper(); // (1) ObjectMapper생성
+        var objectMapper = new ObjectMapper();
         // object -> text
         // object mapper get method를 활용한다.
 
-        var user = new User("steve",10); //(3) 실습을 위한 Object 생성
+        var user = new User("steve",10,"010-1111-2222"); // (5) phoneNumber삽입
 
-        var text = objectMapper.writeValueAsString(user); // (4) writeValueAsString메소드 이용,예외처리하기
+        var text = objectMapper.writeValueAsString(user);
         System.out.println(text);
 
-        //text -> object
-//        var objectUser = objectMapper.readValue(text,User.class);
-//        System.out.println(objectUser);
+        // text -> object
+        var objectUser = objectMapper.readValue(text,User.class);
+        System.out.println(objectUser);
 
     }
 

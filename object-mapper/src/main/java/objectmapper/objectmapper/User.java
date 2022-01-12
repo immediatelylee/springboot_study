@@ -1,20 +1,48 @@
 package objectmapper.objectmapper;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class User {
-    //(2) User클래스 생성 name,age,toString,생성자
+
     private String name;
     private int age;
 
-    public User(String name,int age){
-        this.name = name;
-        this.age = age;
+
+    @JsonProperty("phone_number") // (1) JsonProperty추가
+    private String phoneNumber;
+
+    public User(){
+        this.name = null;
+        this.age = 0;
+        this.phoneNumber = null; //(2-1) 디폴트 생성자에 phoneNumber추가
     }
 
+    public User(String name,int age,String phoneNumber){
+        this.name = name;
+        this.age = age;
+        this.phoneNumber = phoneNumber;  // (2-2) 생성자에 phoneNumber추가
+
+    }
+
+    public String getPhoneNumber() { //(3) phoneNumber getter추가
+        return phoneNumber;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    // (4) toString 업데이트
     @Override
     public String toString() {
         return "User{" +
                 "name='" + name + '\'' +
                 ", age=" + age +
+                ", phoneNumber='" + phoneNumber + '\'' +
                 '}';
     }
 }
