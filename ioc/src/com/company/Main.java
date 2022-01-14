@@ -7,7 +7,10 @@ public class Main {
 	// base64 encoding
     Encoder encoder = new Encoder();
     String result = encoder.encode(url);
-    System.out.println(result);
+
+    IEncoder urlEncoder = new UrlEncoder();
+    String urlResult = urlEncoder.encode(url);
+    System.out.println(urlResult);
 
     }
 }
