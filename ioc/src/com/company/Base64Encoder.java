@@ -2,6 +2,7 @@ package com.company;
 
 import java.util.Base64;
 
+
 public class Base64Encoder implements IEncoder{
     public String encode(String message){
 
