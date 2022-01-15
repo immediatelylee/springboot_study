@@ -3,8 +3,16 @@ package com.company;
 import java.util.Base64;
 
 public class Encoder {
-    public String encode(String message){
+    // 감추기 시작
+    private IEncoder iEncoder;
 
-        return Base64.getEncoder().encodeToString(message.getBytes());
+
+    public Encoder(IEncoder iEncoder){
+        this.iEncoder = iEncoder;
+    }
+
+
+    public String encode(String message){
+        return iEncoder.encode(message);
     }
 }
