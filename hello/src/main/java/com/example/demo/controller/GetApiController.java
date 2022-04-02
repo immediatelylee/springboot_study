@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.dto.UserRequest;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLOutput;
@@ -41,4 +42,26 @@ public class GetApiController {
         return sb.toString(); // sb에 저장한 내용 출력
     }
 
+    @GetMapping(path="query-param2")
+    public String queryParam2(
+        @RequestParam String name,
+        @RequestParam String email,
+        @RequestParam int age) {
+        System.out.println(name);
+        System.out.println(email);
+        System.out.println(age);
+
+        return name+ " "+email +" "+ age;
+    }
+
+    @GetMapping(path="query-param3")
+    public String queryParam3(
+            UserRequest userRequest) {
+        // 객체로 받을때는 @requestParam을 붙이지 않는다
+        System.out.println(userRequest.getName());
+        System.out.println(userRequest.getEmail());
+        System.out.println(userRequest.getAge());
+
+        return userRequest.toString();
+    }
 }
