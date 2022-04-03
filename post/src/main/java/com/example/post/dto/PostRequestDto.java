@@ -49,7 +49,7 @@ public class PostRequestDto {
 
     @JsonProperty("OTP")
     private String OTP;
-    
+
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
