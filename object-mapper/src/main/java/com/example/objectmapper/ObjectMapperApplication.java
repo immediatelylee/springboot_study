@@ -1,4 +1,4 @@
-package objectmapper.objectmapper;
+package com.example.objectmapper;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
