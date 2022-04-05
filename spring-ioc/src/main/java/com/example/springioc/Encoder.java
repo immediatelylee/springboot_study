@@ -1,7 +1,5 @@
 package com.example.springioc;
 
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 
 
 public class Encoder {
