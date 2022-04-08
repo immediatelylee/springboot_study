@@ -1,5 +1,6 @@
 package com.example.aop.controller;
 
+import com.example.aop.dto.User;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -12,6 +13,9 @@ public class RestApiController {
         System.out.println("get method"+id);
         System.out.println("get method"+name);
     }
+    @PostMapping("/post")
+    public void post(@RequestBody User user){
+        System.out.println("post method : "+user);
 
-    public void post(){}
+    }
 }
