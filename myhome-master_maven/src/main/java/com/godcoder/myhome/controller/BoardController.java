@@ -1,11 +1,12 @@
-package com.example.thymeleaf_layout2.Controller;
+package com.godcoder.myhome.controller;
 
-import com.example.thymeleaf_layout2.model.Board;
-import com.example.thymeleaf_layout2.repository.BoardRepository;
+import com.godcoder.myhome.model.Board;
+import com.godcoder.myhome.repository.BoardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
 
 import java.util.List;
 
