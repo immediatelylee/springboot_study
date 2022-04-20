@@ -1,13 +1,16 @@
 package com.godcoder.myhome.controller;
 
+import com.godcoder.myhome.Validator.BoardValidator;
 import com.godcoder.myhome.model.Board;
 import com.godcoder.myhome.repository.BoardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -17,10 +20,15 @@ public class BoardController {
     @Autowired
     private BoardRepository boardRepository;
 
+    @Autowired
+    private BoardValidator boardValidator;
+
+//    게시판을 호출하는데 db에서 정보를 불러오고 싶다 model사용
     @GetMapping("/list")
     public String list(Model model){
         List<Board> boards = boardRepository.findAll();
         model.addAttribute("boards",boards);
+
         return "board/list";
     }
 
@@ -35,13 +43,22 @@ public class BoardController {
 
         return "board/form";
     }
+//    https://spring.io/guides/gs/validating-form-input/
     @PostMapping("/form")
-    public String greetingSubmit(@ModelAttribute Board board) {
+    public String greetingSubmit(@Valid Board board, BindingResult bindingResult) {
+        boardValidator.validate(board,bindingResult);
+        if (bindingResult.hasErrors()) {
+            return "board/form";
+        }
         boardRepository.save(board);
+        return "redirect:/board/list";
+    }
+
 //      spring guidence handling form submission
 //      강의 - 값을 뿌려주고 list로 가야 하기 때문에 redirect를 써야한다
-        return "redirect:/board/list";
+
+
 //        return "/board/list";
     }
 
-}
+
