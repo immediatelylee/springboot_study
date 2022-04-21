@@ -4,6 +4,9 @@ import com.godcoder.myhome.Validator.BoardValidator;
 import com.godcoder.myhome.model.Board;
 import com.godcoder.myhome.repository.BoardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -25,8 +28,9 @@ public class BoardController {
 
 //    게시판을 호출하는데 db에서 정보를 불러오고 싶다 model사용
     @GetMapping("/list")
-    public String list(Model model){
-        List<Board> boards = boardRepository.findAll();
+    public String list(Model model, Pageable pageable){
+        Page<Board> boards = boardRepository.findAll(PageRequest.of(0, 20));
+        boards.getTotalElements();
         model.addAttribute("boards",boards);
 
         return "board/list";
