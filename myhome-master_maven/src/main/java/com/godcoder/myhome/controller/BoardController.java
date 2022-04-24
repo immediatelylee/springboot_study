@@ -29,8 +29,12 @@ public class BoardController {
 //    게시판을 호출하는데 db에서 정보를 불러오고 싶다 model사용
     @GetMapping("/list")
     public String list(Model model, Pageable pageable){
-        Page<Board> boards = boardRepository.findAll(PageRequest.of(0, 20));
-        boards.getTotalElements();
+        Page<Board> boards = boardRepository.findAll(pageable);
+//        boards.getTotalElements();
+        int startPage = Math.max(0,boards.getPageable().getPageNumber() -4);
+        int endPage = Math.min(boards.getTotalPages(),boards.getPageable().getPageNumber() +4);
+        model.addAttribute("start",startPage);
+        model.addAttribute("endPage",endPage);
         model.addAttribute("boards",boards);
 
         return "board/list";
