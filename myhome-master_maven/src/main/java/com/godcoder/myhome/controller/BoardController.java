@@ -31,9 +31,9 @@ public class BoardController {
     public String list(Model model, Pageable pageable){
         Page<Board> boards = boardRepository.findAll(pageable);
 //        boards.getTotalElements();
-        int startPage = Math.max(0,boards.getPageable().getPageNumber() -4);
+        int startPage = Math.max(1,boards.getPageable().getPageNumber() -4);
         int endPage = Math.min(boards.getTotalPages(),boards.getPageable().getPageNumber() +4);
-        model.addAttribute("start",startPage);
+        model.addAttribute("startPage",startPage);
         model.addAttribute("endPage",endPage);
         model.addAttribute("boards",boards);
 
