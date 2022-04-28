@@ -13,6 +13,19 @@
 <!--    div태그에 총 건수를 th:text로 표현해야함 ->  BoardController에서 List로 넘어온것이 Board인데 리스트의 데이터를 조작하기 위해서-->
 <!--    타임리프의 문법을 이용해야함.  타임리프 닥스에서 list검색했을때 size를 구할수 있는 가이드 나옴 -> 붙이기 -->
 <!--    lists.size(전달받은 리스트)-->
+
+    <form class="form-inline d-flex justify-content-end" >
+        <div class="form-group mb-2">
+            <label for="searchText" class="sr-only">검색</label>
+            <input type="text" readonly class="form-control-plaintext" id="searchText" name="searchText">
+        </div>
+        <div class="form-group mx-sm-3 mb-2">
+            <input type="text" class="form-control">
+        </div>
+<!--        <button type="button" class="btn btn-light">Light</button>-->
+        <button type="submit" class="btn btn-light">검색</button>
+    </form> <!--    https://getbootstrap.com/docs/4.5/components/forms/  에서 긁어옴-->
+
     <table class="table table-striped">
         <thead>
         <tr>
@@ -37,13 +50,14 @@
     </table>
     <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center">
-            <li class="page-item disabled">
-                <a class="page-link">Previous</a>
+            <li class="page-item" th:classappend="${1 == boards.pageable.pageNumber + 1} ? 'disabled'" >
+                <a class="page-link" href="#" tabindex="-1" th:href="@{/board/list(page=${boards.pageable.pageNumber -1})}">Previous</a>
             </li>
-            <li class="page-item" th:each="i : ${#numbers.sequence(startPage,endPage)}"><a class="page-link"  href="#" th:text="${i}">1</a></li>
+            <li class="page-item" th:classappend="${i == boards.pageable.pageNumber+1} ? 'disabled'" th:each="i : ${#numbers.sequence(startPage,endPage)}">
+                <a class="page-link"  href="#" th:href="@{/board/list(page=${i -1})}" th:text="${i}">1</a></li>
 
-            <li class="page-item">
-                <a class="page-link" href="#">Next</a>
+            <li class="page-item" th:classappend="${boards.totalPages == boards.pageable.pageNumber+1} ? 'disabled'">
+                <a class="page-link" href="#" th:href="@{/board/list(page=${boards.pageable.pageNumber +1})}">Next</a>
             </li>
         </ul>
     </nav>

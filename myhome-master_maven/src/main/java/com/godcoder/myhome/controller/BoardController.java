@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -28,7 +29,7 @@ public class BoardController {
 
 //    게시판을 호출하는데 db에서 정보를 불러오고 싶다 model사용
     @GetMapping("/list")
-    public String list(Model model, Pageable pageable){
+    public String list(Model model,@PageableDefault(size=2) Pageable pageable,String searchText){
         Page<Board> boards = boardRepository.findAll(pageable);
 //        boards.getTotalElements();
         int startPage = Math.max(1,boards.getPageable().getPageNumber() -4);
