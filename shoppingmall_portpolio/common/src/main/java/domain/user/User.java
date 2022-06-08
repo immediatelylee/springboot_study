@@ -27,28 +27,32 @@ public class User extends BaseTimeEntity {
     private UUID id;
 
     @Column
-    private String identifier;
-
-    @Column
-    private String password;
-
-    @Column
-    private String name;
-
-    @Column
-    private String email;
-
-    @Column
-    private String roadAddr;
+    private String authorities;
 
     @Column
     private String buildingName;
+
+    // created_date -> EntityListeners
 
     @Column
     private String detailAddr;
 
     @Column
-    private String authorities;
+    private String email;
+
+    @Column
+    private String identifier;
+
+    // modifired_date -> EntityListener
+
+    @Column
+    private String name;
+
+    @Column
+    private String password;
+
+    @Column
+    private String roadAddr;
 
     @ColumnDefault("0")
     @Column
@@ -56,6 +60,7 @@ public class User extends BaseTimeEntity {
 
     @Column
     private Character disabledYn;
+
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     @JsonIgnore
