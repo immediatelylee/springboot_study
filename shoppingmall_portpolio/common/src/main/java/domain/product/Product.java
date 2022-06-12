@@ -1,6 +1,11 @@
 package domain.product;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import domain.cart.Cart;
+import domain.productDisPrc.ProductDisPrc;
+import domain.productimg.ProductImg;
+import domain.question.Question;
+import domain.review.Review;
 import org.hibernate.annotations.BatchSize;
 import org.hibernate.annotations.ColumnDefault;
 
