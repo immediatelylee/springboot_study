@@ -6,6 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.UUID;
 
-public interface productOrderRepository extends JpaRepository<ProductOrder, Long> {
+public interface ProductOrderRepository extends JpaRepository<ProductOrder, Long> {
     Page<ProductOrder> findAllByUserIdOrderByCreatedDateDesc(UUID userId, Pageable pageable);
 }

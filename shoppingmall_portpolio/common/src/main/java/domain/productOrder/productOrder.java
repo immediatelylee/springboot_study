@@ -1,12 +1,13 @@
 package domain.productOrder;
 
+import domain.cart.Cart;
 import domain.user.User;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
 
-public class productOrder {
+public class ProductOrder {
 
     @Id // primary key
     @GeneratedValue(strategy = GenerationType.IDENTITY)
