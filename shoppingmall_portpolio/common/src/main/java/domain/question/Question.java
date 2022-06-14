@@ -1,6 +1,7 @@
 package domain.question;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import domain.product.Product;
 import domain.questionAnswer.QuestionAnswer;
 import domain.user.User;
 import lombok.*;
