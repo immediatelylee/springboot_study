@@ -1,0 +1,8 @@
+rootProject.name = 'multimoduletest2'
+include 'app'
+include 'core'
+include 'web'
+include 'core1'
+include 'admin'
+include 'moduletest2'
+
