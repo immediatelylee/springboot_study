@@ -1,2 +1,12 @@
 rootProject.name = 'shoppingmall_portpolio'
-include("api","common")
+include 'app:api-server'
+include 'app:batch-server'
+include 'app:order-server'
+include 'app:product-purchase-count-server'
+include 'app:product-purchase-count-batch'
+include 'app:mail-server'
+include 'app:common'
+include 'lib:redis'
+include 'lib:kafka'
+include 'app'
+
