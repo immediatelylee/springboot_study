@@ -1,0 +1,4 @@
+rootProject.name = 'multimodueltest'
+
+include 'module-api'
+include 'module-common'

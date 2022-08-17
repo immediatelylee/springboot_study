@@ -1,0 +1,3 @@
+rootProject.name = 'shoppingmall-portpolio'
+include 'app:module-api'
+include 'app:module-common'
