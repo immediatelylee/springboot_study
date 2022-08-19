@@ -11,12 +11,28 @@ sourceCompatibility = '11'
 repositories {
     mavenCentral()
 }
+//subprojects {
+//    apply plugin: 'java'
+//    apply plugin: 'org.springframework.boot'
+//    apply plugin: 'io.spring.dependency-management'
+//
+//    group = 'dev.be'
+//    sourceCompatibility = '11'
+//
+//    repositories {
+//        mavenCentral()
+//    }
+//    dependencies {
+//        implementation 'org.projectlombok:lombok'
+//        annotationProcessor 'org.projectlombok:lombok'
+//
+//}
 
+
+//}
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
-tasks.named('test') {
+    tasks.named('test') {
     useJUnitPlatform()
 }
