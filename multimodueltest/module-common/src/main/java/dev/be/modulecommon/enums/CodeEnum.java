@@ -6,7 +6,7 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public enum CodeEnum {
-    SUCESS("0000","Sucess"),
+    SUCCESS("0000","Sucess"),
     UNKNOWN_ERROR("9999","UNKNOW_ERROR");
 
     private String code;

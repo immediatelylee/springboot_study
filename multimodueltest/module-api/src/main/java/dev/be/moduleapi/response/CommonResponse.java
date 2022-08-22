@@ -1,16 +1,16 @@
-package dev.be.modulecommon.excetion;
+package dev.be.moduleapi.response;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import dev.be.modulecommon.enums.CodeEnum;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
-
+@Getter
 @Setter
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class CommonResponse<T> {
-
     private String returnCode;
     private String returnMessage;
     private T info;
@@ -21,8 +21,9 @@ public class CommonResponse<T> {
     }
 
     public CommonResponse(T info){
-        setReturnMessage(CodeEnum.SUCESS.getMessage());
-        setReturnCode(CodeEnum.SUCESS.getCode());
+        setReturnMessage(CodeEnum.SUCCESS.getMessage());
+        setReturnCode(CodeEnum.SUCCESS.getCode());
+        setInfo(info);
     }
 
     public CommonResponse(CodeEnum codeEnum,T info){
